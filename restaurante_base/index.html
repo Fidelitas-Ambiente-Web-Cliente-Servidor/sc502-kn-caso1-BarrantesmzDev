@@ -3,26 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurante Ficticio</title>
-
+  <title>Ristorante Aroma</title>
+ 
   <!-- Bootstrap CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
-
+ 
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet"
   />
-
+ 
   <!-- Estilos propios -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
+ 
+  <!-- ENCABEZADO -->
+  <header class="encabezado text-center py-4">
+    <div class="container">
+      <h1>Ristorante Aroma</h1>
+      <p>Cocina italiana con un toque costarricense</p>
+    </div>
+  </header>
+ 
+  <!-- SECCIÓN 1: MENÚ -->
+  <section class="container py-5">
+    <h2 class="text-center mb-4">Nuestro Menú</h2>
+ 
+    <!-- Botones de filtro por categoría -->
+    <div class="d-flex justify-content-center gap-2 flex-wrap mb-4" id="filtros-menu">
+      <button type="button" class="btn btn-filtro" data-categoria="Todos">Todos</button>
+      <button type="button" class="btn btn-filtro" data-categoria="Entrada">Entradas</button>
+      <button type="button" class="btn btn-filtro" data-categoria="Plato Fuerte">Platos Fuertes</button>
+      <button type="button" class="btn btn-filtro" data-categoria="Postre">Postres</button>
+    </div>
+ 
+    <!-- Las cards se generan dinámicamente con JS dentro de este contenedor -->
+    <div class="row g-4" id="contenedor-menu"></div>
+  </section>
+ 
+  <!-- SECCIÓN 2: FORMULARIO DE RESERVAS -->
+  <section class="container py-5">
+    <h2 class="text-center mb-4">Reserva tu Mesa</h2>
+ 
+    <form id="form-reserva" class="row g-3 mx-auto" novalidate>
+ 
+      <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre completo</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" />
+        <div class="error-campo" id="error-nombre"></div>
+      </div>
+ 
+      <div class="col-md-6">
+        <label for="correo" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="correo" name="correo" />
+        <div class="error-campo" id="error-correo"></div>
+      </div>
+ 
+      <div class="col-md-4">
+        <label for="fecha" class="form-label">Fecha de reserva</label>
+        <input type="date" class="form-control" id="fecha" name="fecha" />
+        <div class="error-campo" id="error-fecha"></div>
+      </div>
+ 
+      <div class="col-md-4">
+        <label for="hora" class="form-label">Hora</label>
+        <select class="form-select" id="hora" name="hora">
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+        </select>
+      </div>
+ 
+      <div class="col-md-4">
+        <label for="personas" class="form-label">Número de personas</label>
+        <input type="number" class="form-control" id="personas" name="personas" />
+        <div class="error-campo" id="error-personas"></div>
+      </div>
+ 
+      <div class="col-12">
+        <label for="comentarios" class="form-label">Comentarios (opcional)</label>
+        <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
+      </div>
+ 
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-reservar" id="btn-reservar" disabled>Reservar</button>
+      </div>
+ 
+    </form>
+  </section>
+ 
+  <!-- TABLA DE RESERVAS -->
+  <section class="container py-5">
+    <h2 class="text-center mb-4">Reservas Registradas</h2>
+ 
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle text-center">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Personas</th>
+          </tr>
+        </thead>
+        <!-- Las filas se agregan dinámicamente con JS -->
+        <tbody id="tabla-reservas"></tbody>
+      </table>
+    </div>
+ 
+    <!-- Resumen dinámico generado con JS -->
+    <div class="resumen-reservas" id="resumen-reservas"></div>
+  </section>
+ 
   <script src="js/app.js"></script>
-
 </body>
 </html>
