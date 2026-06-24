@@ -1,28 +1,160 @@
 :root {
-  /* ─── Paleta de colores ─────────────────────────
-     TODO: Podés cambiar estos valores para personalizar
-     el tema de tu restaurante
-  ─────────────────────────────────────────────── */
-  --color-primario:    #2C3E50;
-  --color-secundario:  #E67E22;
-  --color-fondo:       #FAF8F5;
-  --color-texto:       #333333;
-  --color-claro:       #FFFFFF;
-  --color-reserva-vip: #FFF3CD; /* fondo para grupos de 6+ personas */
+    /* colores del restaurante */
+    --color-primario:    #7A1C1C;
+    --color-secundario:  #C49A6C;
+    --color-fondo:       #F5F0E6;
+    --color-texto:       #2C2C2C;
+    --color-claro:       #FFFFFF;
+    --color-reserva-vip: #E6D9B6; /* color especial para reservas de 6+ personas */
 
-  --fuente-titulo: 'Playfair Display', serif;
-  --fuente-cuerpo: 'Lato', sans-serif;
+    --fuente-titulo: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Lato', sans-serif;
 }
 
 /* ─── RESET Y BASE ─── */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: var(--fuente-cuerpo);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulo);
+}
+
+/* ─── ENCABEZADO ─── */
+.encabezado {
+    background-color: var(--color-primario);
+    color: var(--color-claro);
+}
+
+.encabezado p {
+    color: var(--color-secundario);
+}
+
+/* ─── BOTONES DE FILTRO ─── */
+.btn-filtro {
+    border: 2px solid var(--color-primario);
+    background-color: var(--color-claro);
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+.btn-filtro:hover {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-claro);
+}
+
+/* clase que se agrega con JS al botón de la categoría activa */
+.activo {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-claro);
+}
+
+/* ─── CARDS DEL MENÚ ─── */
+.card-plato {
+    background-color: var(--color-claro);
+    border: 1px solid var(--color-primario);
+    padding: 20px;
+    height: 100%;
+}
+
+.card-plato h3 {
+    color: var(--color-primario);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.card-plato p {
+    margin-bottom: 6px;
+}
+
+.precio {
+    color: var(--color-secundario);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.categoria {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: var(--color-claro);
+    font-size: 13px;
+    padding: 2px 10px;
+}
+
+/* ─── FORMULARIO DE RESERVAS ─── */
+#form-reserva {
+    max-width: 800px;
+}
+
+.btn-reservar {
+    background-color: var(--color-secundario);
+    color: var(--color-claro);
+    border: none;
+    padding: 10px 30px;
+    font-weight: bold;
+}
+
+.btn-reservar:disabled {
+    background-color: #D5C7A1;
+}
+
+/* mensajes de error debajo de cada campo */
+.error-campo {
+    color: #B22222;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* ─── TABLA DE RESERVAS ─── */
+.fila-reserva {
+    background-color: var(--color-claro);
+}
+
+/* reservas de 6 o más personas se muestran con fondo diferente */
+.fila-reserva.vip,
+.fila-reserva.vip > td {
+    background-color: var(--color-reserva-vip) !important;
+}
+
+/* ─── RESUMEN DINÁMICO ─── */
+.resumen-reservas {
+    background-color: var(--color-primario);
+    color: var(--color-claro);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.resumen-reservas h3 {
+    color: var(--color-secundario);
+    margin-bottom: 10px;
+}
+
+.resumen-reservas p {
+    margin-bottom: 4px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .encabezado h1 {
+        font-size: 26px;
+    }
+
+    .btn-filtro {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    #form-reserva {
+        max-width: 100%;
+    }
 }
